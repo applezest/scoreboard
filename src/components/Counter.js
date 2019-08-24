@@ -1,17 +1,13 @@
 import React from 'react';
 
 export class Counter extends React.Component {
-	state = {
-		score: 0,
-		a: 3
-	}
 
 	constructor(props) {
 		super(props);
 		// 1) this.incrementScore = this.incrementScore.bind(this);
 	}
 
-	changeScore = (delta) => {
+	changeScore = (id,delta) => {
 		// 2) arrow 펑션안의 this는 lexical this
 		console.log(this);
 		// 1. state를 변경하는 방법
@@ -28,10 +24,10 @@ export class Counter extends React.Component {
 		return (
 			<div className='counter'>
 				<button className='counter-action decrement'
-								onClick={() => this.changeScore(-1)}> - </button>
-				<span className='counter-score'>{this.state.score}</span>
+								onClick={() => this.props.changeScore(this.props.id,-1)}> - </button>
+				<span className='counter-score'>{this.props.score}</span>
 				<button className='counter-action increment'
-								onClick={() => this.changeScore(1)}> + </button>
+								onClick={() => this.props.changeScore(this.props.id,1)}> + </button>
 			</div>
 		);
 	}
