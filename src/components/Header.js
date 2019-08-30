@@ -5,12 +5,12 @@ import { Stats } from './Stats';
 // react element를 리턴해야 한다.
 
 export const Header = (props) => {
-	console.log(props);
+	console.log('header.js',this,props);
 	// destruct assignment
 	const {title, totalPlayers, players} = props;
 	return (
 		<header className="header">
-			<Stats players={players}/>
+			<Stats players={players} totalPlayers={totalPlayers} />
 			<h1 className="h1">{title}</h1>
 			<span className='stats'>Players: {totalPlayers}</span>
 		</header>
