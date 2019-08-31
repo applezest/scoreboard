@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Stats = (props) => {
 	console.log('Stats.js',this,props);
-	// todo: 로직구현
+
 	let {totalPlayers, players} = props;
 	totalPlayers = players.length; //props.players
 
