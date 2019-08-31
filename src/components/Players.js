@@ -1,9 +1,10 @@
 import React from 'react';
 import { Counter } from './Counter';
+import PropTypes from "prop-types";
 
 export class Player extends React.Component{
 	render(){
-		console.log(this.props.name, 'rendered')
+		console.log(this.props.name, 'rendered');
 
 		const {removePlayer, id, name, score, changeScore} = this.props;
 
@@ -18,7 +19,7 @@ export class Player extends React.Component{
 		)
 	}
 	shouldComponentUpdate(nextProps, nextState, nextContext) {
-		console.log('here-------------------------')
+		console.log('here-------------------------');
 		console.log(nextProps);
 		//return true;
 
@@ -38,3 +39,13 @@ export const Player = (props) => (
 	</div>
 );
 */
+
+
+// 5가지 type 정의
+Player.propTypes = {
+	removePlayer: PropTypes.func,
+	id: PropTypes.number,
+	name: PropTypes.string,
+	score: PropTypes.number,
+	changeScore: PropTypes.func
+};
