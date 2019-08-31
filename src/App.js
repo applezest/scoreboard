@@ -54,7 +54,7 @@ class App extends React.Component {
     console.log(id, delta);
     this.setState(prevState => {
       // id에 해당되는 player를 찾은 다음 score에 delta를 더한다.
-      const players2 = [ ...prevState.players ]; // 기존배열을 스프레드연산자(...)를 사용해 새로운 배열로 옮겨담는것
+      const players2 = [ ...prevState.players ]; // 기존배열을 스프레드연산자(...)를 사용해 새로운 배열로 옮겨담는것. []는 deep copy
       players2.forEach(player => {
         if (player.id === id) {
           player.score += delta;
