@@ -3,10 +3,6 @@ import React from 'react';
 export class AddPlayerForm extends React.Component {
 	textInput = React.createRef();
 
-	handleValueChange = (e) => {
-		this.setState({value: e.target.value});
-	}
-
 	// 2-3) 부모에게서 받은 콜백 펑션을 호출
 	handleSubmit = (e) => {
 		console.log('submit');
@@ -31,7 +27,9 @@ export class AddPlayerForm extends React.Component {
 	render() {
 		return (
 			<form id="form" className="form" onSubmit={this.handleSubmit} noValidate>
-				<input id="player" className="input" type="text" placeholder="enter a player's name" value={this.textInput} onChange={this.handleValueChange} ref={this.textInput} required></input>
+				<input id="player" className="input" type="text"
+							 placeholder="enter a player's name"
+							 ref={this.textInput} required></input>
 				<input className="input" type="submit" value="Add Player"></input>
 			</form>
 		);
