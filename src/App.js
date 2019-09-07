@@ -3,18 +3,10 @@ import './App.css';
 import { Header } from './components/Header';
 import { Player } from './components/Players';
 import { AddPlayerForm } from './components/AddPlayerForm';
+import {connect} from "react-redux";
 
 
 class App extends React.Component {
-  state = {
-    players: [
-      {name: 'JYJ', score: 0, id: 1},
-      {name: 'HONG', score: 1, id: 2},
-      {name: 'KIM', score: 2, id: 3},
-      {name: 'PARK', score: 3, id: 4},
-    ]
-  }
-  maxId = 4;
 
   constructor(){
     super();
@@ -25,10 +17,10 @@ class App extends React.Component {
     console.log('Apps.js',this);
     return (
       <div className='scoreboard'>
-        <Header players={this.state.players} totalPlayers={this.state.players.length} />
+        <Header players={this.props.players} totalPlayers={this.props.players.length} />
 
         {
-          this.state.players.map(player => (
+          this.props.players.map(player => (
             <Player name={player.name} score={player.score} key={player.id} id={player.id}
                     changeScore={this.handleChangeScore}
                     removePlayer={this.handleRemovePlayer}/>
@@ -80,4 +72,10 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+// store에 있는 state를 props로 mapping
+const mapStateToProps = (state) => ({
+  //왼쪽은 자식이 물려받을 props, 오른쪽은 부모(store)에 있는 state = {product: xxx, user: yyy}
+  players: state.playerReducer.players
+})
+
+export default connect(mapStateToProps)(App);
