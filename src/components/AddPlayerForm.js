@@ -1,6 +1,8 @@
 import React from 'react';
+import {addPlayer} from "../redux/action";
+import {connect} from "react-redux";
 
-export class AddPlayerForm extends React.Component {
+class AddPlayerForm extends React.Component {
 	textInput = React.createRef();
 
 	handleSubmit = (e) => {
@@ -16,7 +18,7 @@ export class AddPlayerForm extends React.Component {
 
 		// 2-3) 부모에게서 받은 콜백 펑션을 호출
 		// this.textInput.current === document.getElementById("player");
-		// this.props.addPlayer(this.textInput.current.value);
+		 this.props.addPlayer(this.textInput.current.value);
 
 	}
 
@@ -35,3 +37,10 @@ export class AddPlayerForm extends React.Component {
 		);
 	}
 }
+
+const mapActionToProps = (dispatch) => ({
+	// 왼쪽은 현재컴포넌트의 props, 오른쪽은 action
+	addPlayer: (name) => dispatch(addPlayer(name))
+})
+
+export default connect(null, mapActionToProps)(AddPlayerForm);

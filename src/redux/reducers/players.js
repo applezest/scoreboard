@@ -12,5 +12,17 @@ const playerInitialState = {
 
 // state = playerInitialState... default 문법. undefined가 들어올 때 기본값 설정하는 것.
 export const playerReducer = (state = playerInitialState, action) => {
-	return state;
+	switch (action.type) {
+		case 'ADD_PLAYER':
+			// 기존 player에 name을 가진 player 객체를 추가
+			state.players.push({name: action.name, score:0, id: ++maxId});
+			return {
+				...state,
+				players: [
+					...state.players
+				]
+			}
+		default:
+			return state;
+	}
 }
