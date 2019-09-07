@@ -28,7 +28,6 @@ Header.defaultProps = {
 	title: 'Scoreboard'
 }
 
-// todo : store의 title을 props로 내려받아서 화면에 표시하기
 // store의 title을 props로 내려받아서 화면에 표시하기
 const mapStateToProps = (state) => ({
 	title: state.playerReducer.title
