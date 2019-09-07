@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {removePlayer} from "../redux/action";
 
-class Player extends React.Component{
+class Player extends React.PureComponent{
 	static propsType = {
 		removePlayer: PropTypes.func,
 		id: PropTypes.number,
@@ -28,14 +28,14 @@ class Player extends React.Component{
 			</div>
 		)
 	}
-	shouldComponentUpdate(nextProps, nextState, nextContext) {
-		console.log('here-------------------------');
-		console.log(nextProps);
-		//return true;
-
-		//score가 다를 경우만 true를 리턴
-		return this.props.score !==nextProps.score;
-	}
+	// shouldComponentUpdate(nextProps, nextState, nextContext) {
+	// 	console.log('here-------------------------');
+	// 	console.log(nextProps);
+	// 	//return true;
+	//
+	// 	//score가 다를 경우만 true를 리턴
+	// 	return this.props.score !==nextProps.score;
+	// }
 }
 
 // action을 dispatch하는 펑션을 props로 mapping (자식이 부모와 통신)
