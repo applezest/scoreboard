@@ -7,6 +7,15 @@ import {CustomPlayer} from "./components/CustomPlayer";
 
 
 class App extends React.Component {
+  getHighScore(){
+    let highScore = 0;
+    this.props.players.forEach(player => {
+      if (player.score >= highScore) {
+        highScore = player.score;
+      }
+    })
+    return highScore;
+  }
 
   render() {
     console.log('Apps.js',this);
@@ -16,7 +25,8 @@ class App extends React.Component {
 
         {
           this.props.players.map(player => (
-            <CustomPlayer name={player.name} score={player.score} key={player.id} id={player.id} />
+            <CustomPlayer name={player.name} score={player.score} key={player.id} id={player.id}
+            isHighScore={player.score === this.getHighScore()} />
           ))
         } {/*배열리턴*/}
 
