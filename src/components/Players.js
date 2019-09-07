@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {removePlayer} from "../redux/action";
 
+import styles from '../pages/Scoreboard.module.css'
+
 class Player extends React.PureComponent{
 	static propsType = {
 		removePlayer: PropTypes.func,
@@ -15,12 +17,12 @@ class Player extends React.PureComponent{
 	render(){
 		console.log(this.props.name, 'rendered');
 
-		const {removePlayer, id, name, score, changeScore} = this.props;
+		const {removePlayer, id, name, score} = this.props;
 
 		return (
-			<div className='player'>
-			<span className='player-name'>
-				<button className='remove-player' onClick={() => removePlayer(id)}>x</button>
+			<div className={styles.player}>
+			<span className={styles['player-name']}>
+				<button className={styles['remove-player']} onClick={() => removePlayer(id)}>x</button>
 				{this.props.children}
 				{name}
 			</span>

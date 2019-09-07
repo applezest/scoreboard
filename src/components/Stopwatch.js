@@ -1,6 +1,8 @@
 import React from 'react';
-import {changeScore, updateTitle} from "../redux/action";
+import {updateTitle} from "../redux/action";
 import {connect} from "react-redux";
+
+import styles from '../pages/Scoreboard.module.css';
 
 class Stopwatch extends React.Component {
 	tickRef;
@@ -18,9 +20,9 @@ class Stopwatch extends React.Component {
 	}
 	render() {
 		return (
-			<div className="stopwatch">
+			<div className={styles.stopwatch}>
 				<h2>Stopwatch</h2>
-				<span className="stopwatch-time">{this.state.timer}</span>
+				<span className={styles['stopwatch-time']}>{this.state.timer}</span>
 				<button onClick={this.handleStopwatch}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
 				<button onClick={this.handleReset}>Reset</button>
 				<button onClick={() => this.props.updateTitle('redux Scoreboard')}>title change</button>

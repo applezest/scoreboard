@@ -1,9 +1,11 @@
 import React from 'react';
-import App from "../App";
 import Header from "../components/Header";
 import {CustomPlayer} from "../components/CustomPlayer";
 import AddPlayerForm from "../components/AddPlayerForm";
 import {connect} from "react-redux";
+
+import '../index.css';
+import styles from './Scoreboard.module.css'
 
 class Scoreboard extends React.Component {
 	getHighScore(){
@@ -19,7 +21,7 @@ class Scoreboard extends React.Component {
 	render() {
 		console.log('Scoreboard.js',this);
 		return (
-			<div className='scoreboard'>
+			<div className={styles.scoreboard}>
 				<Header players={this.props.players} totalPlayers={this.props.players.length} />
 
 				{

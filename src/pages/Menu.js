@@ -43,9 +43,7 @@ export class Menu extends React.Component {
 							<NavItem>
 								<NavLink className="nav-link" to="/scoreboard">Scoreboard</NavLink>
 							</NavItem>
-							<NavItem>
-								<NavLink className="nav-link" href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-							</NavItem>
+							<a className="nav-link" href="https://github.com/reactstrap/reactstrap" target="_blank">GitHub</a>
 							<UncontrolledDropdown nav inNavbar>
 								<DropdownToggle nav caret>
 									Options

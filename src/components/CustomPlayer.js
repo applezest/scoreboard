@@ -1,13 +1,24 @@
 import React from 'react';
 import Player from './Players';
 
+import classNames from 'classnames';
+
+import '../index.css';
+import styles from '../pages/Scoreboard.module.css';
+
 export const CustomPlayer = (props) => {
 	// is-high-score 클래스는 동적으로 넣어야한다 => 클래스 바인딩
-	let dynamicClass = 'svg';
-	if (props.isHighScore) {
-		dynamicClass += ' ' + 'is-high-score';
-		console.log('------------------------------------------------------ ' + props.isHighScore)
-	}
+	// let dynamicClass = styles.svg;
+	// if (props.isHighScore) {
+	// 	dynamicClass += ' ' + styles.isHighScore;
+	// 	console.log('------------------------------------------------------ ' + props.isHighScore)
+	// }
+
+	// todo
+	// style 모듈화. 클래스명 _ 넣었을 때 테스트.
+
+	let dynamicClass = classNames(styles.svg, {[styles['is-high-score']]: props.isHighScore} );
+
 	return (
 		<Player {...props}>
 			<svg viewBox="0 0 44 35" className={dynamicClass}>
