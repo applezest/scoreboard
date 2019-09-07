@@ -49,8 +49,8 @@ class Stopwatch extends React.Component {
 
 }
 
-const mapActionToProps = (dispatch) => ({
-	updateTitle: (title) => dispatch(updateTitle(title))
-})
+// const mapActionToProps = (dispatch) => ({
+// 	updateTitle: (title) => dispatch(updateTitle(title))
+// })
 
-export default connect(null, mapActionToProps)(Stopwatch);
+export default connect(null, {updateTitle})(Stopwatch);
