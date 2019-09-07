@@ -8,8 +8,10 @@ export const addPlayer = (name) => ({
 
 export const changeScore = (id, delta) => ({
 	type: CHANGE_SCORE,
-	id, // id: id와 동일
-	delta // delta: delta와 동일
+	payload: {
+		id, // id: id와 동일
+		delta // delta: delta와 동일
+	}
 })
 
 export const removePlayer = (id) => ({
