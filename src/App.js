@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Header } from './components/Header';
+import Header from './components/Header'; // named import
 import { Player } from './components/Players';
 import { AddPlayerForm } from './components/AddPlayerForm';
 import {connect} from "react-redux";

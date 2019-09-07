@@ -2,11 +2,12 @@ import React from 'react';
 import { Stats } from './Stats';
 import {Stopwatch} from "./Stopwatch";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 //펑션 컴포넌트는 반드시 대문자로 시작
 // react element를 리턴해야 한다.
 
-export const Header = (props) => {
+const Header = (props) => {
 	console.log('header.js',this,props);
 	// destruct assignment
 	const {title, totalPlayers, players} = props;
@@ -26,3 +27,11 @@ Header.propTypes = {
 Header.defaultProps = {
 	title: 'Scoreboard'
 }
+
+// todo : store의 title을 props로 내려받아서 화면에 표시하기
+// store의 title을 props로 내려받아서 화면에 표시하기
+const mapStateToProps = (state) => ({
+	title: state.playerReducer.title
+})
+
+export default connect(mapStateToProps)(Header);
