@@ -1,5 +1,5 @@
 // action creator : 부모와 자식이 통신할때
-import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "./actionType";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, UPDATE_TITLE} from "./actionType";
 
 export const addPlayer = (name) => ({
 	type: ADD_PLAYER,
@@ -19,4 +19,9 @@ export const removePlayer = (id) => ({
 	payload: {
 		id, // id: id와 동일
 	}
+})
+
+export const updateTitle = (title) => ({
+	type: UPDATE_TITLE,
+	title
 })

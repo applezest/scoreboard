@@ -1,6 +1,8 @@
 import React from 'react';
+import {changeScore, updateTitle} from "../redux/action";
+import {connect} from "react-redux";
 
-export class Stopwatch extends React.Component {
+class Stopwatch extends React.Component {
 	tickRef;
 
 	state = {
@@ -21,6 +23,7 @@ export class Stopwatch extends React.Component {
 				<span className="stopwatch-time">{this.state.timer}</span>
 				<button onClick={this.handleStopwatch}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
 				<button onClick={this.handleReset}>Reset</button>
+				<button onClick={() => this.props.updateTitle('redux Scoreboard')}>title change</button>
 			</div>
 		);
 	}
@@ -45,4 +48,9 @@ export class Stopwatch extends React.Component {
 	}
 
 }
-     
+
+const mapActionToProps = (dispatch) => ({
+	updateTitle: (title) => dispatch(updateTitle(title))
+})
+
+export default connect(null, mapActionToProps)(Stopwatch);
