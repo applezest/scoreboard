@@ -27,8 +27,7 @@ class App extends React.Component {
           ))
         } {/*배열리턴*/}
 
-        {/*//2-2) 콜백펑션을 props로 내려주기*/}
-				<AddPlayerForm addPlayer={this.handleAddPlayer}/>
+				<AddPlayerForm />
       </div>
     );
   }
@@ -58,18 +57,18 @@ class App extends React.Component {
 
 
   // 2-1) 콜백펑션 정의
-  handleAddPlayer = (name) => {
-  	console.log(name);
-		// add player 로직
-		this.setState(prevState => {
-			// 원본 배열을 훼손하면 안된다. => deep copy. 새로운 배열에 기존 배열을 옮겨담음.
-			const players = [ ...prevState.players ];
-
-			players.push({ name, score:0, id: ++this.maxId });
-
-			return {players};
-		})
-	}
+  // handleAddPlayer = (name) => {
+  // 	console.log(name);
+	// 	// add player 로직
+	// 	this.setState(prevState => {
+	// 		// 원본 배열을 훼손하면 안된다. => deep copy. 새로운 배열에 기존 배열을 옮겨담음.
+	// 		const players = [ ...prevState.players ];
+	//
+	// 		players.push({ name, score:0, id: ++this.maxId });
+	//
+	// 		return {players};
+	// 	})
+	// }
 }
 
 // store에 있는 state를 props로 mapping

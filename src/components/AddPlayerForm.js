@@ -3,7 +3,6 @@ import React from 'react';
 export class AddPlayerForm extends React.Component {
 	textInput = React.createRef();
 
-	// 2-3) 부모에게서 받은 콜백 펑션을 호출
 	handleSubmit = (e) => {
 		console.log('submit');
 		// submit의 기본 이벤트 막기
@@ -15,8 +14,9 @@ export class AddPlayerForm extends React.Component {
 		console.log(player.validity.valid);
 		console.log(form.checkValidity());
 
+		// 2-3) 부모에게서 받은 콜백 펑션을 호출
 		// this.textInput.current === document.getElementById("player");
-		this.props.addPlayer(this.textInput.current.value);
+		// this.props.addPlayer(this.textInput.current.value);
 
 	}
 
