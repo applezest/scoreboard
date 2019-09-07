@@ -1,8 +1,10 @@
 import React from 'react';
-import { Counter } from './Counter';
+import Counter from './Counter';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {removePlayer} from "../redux/action";
 
-export class Player extends React.Component{
+class Player extends React.Component{
 	static propsType = {
 		removePlayer: PropTypes.func,
 		id: PropTypes.number,
@@ -21,7 +23,7 @@ export class Player extends React.Component{
 				<button className='remove-player' onClick={() => removePlayer(id)}>x</button>
 				{name}
 			</span>
-				<Counter id={id} score={score} changeScore={changeScore}/>
+				<Counter id={id} score={score} />
 			</div>
 		)
 	}
@@ -35,20 +37,11 @@ export class Player extends React.Component{
 	}
 }
 
-/*
-export const Player = (props) => (
-	<div className='player'>
-    <span className='player-name'>
-      <button className='remove-player' onClick={() => props.removePlayer(props.id)}>x</button>
-			{props.name}
-    </span>
-		<Counter id={props.id} score={props.score} changeScore={props.changeScore}/>
-	</div>
-);
-*/
+// action을 dispatch하는 펑션을 props로 mapping (자식이 부모와 통신)
+const mapActionToProps = (dispatch) => ({
+	// 왼쪽은 props, 오른쪽은 action
+	removePlayer: (id) => dispatch(removePlayer(id))
+})
 
 
-// 5가지 type 정의
-Player.propTypes = {
-
-};
+export default connect(null, mapActionToProps)(Player);

@@ -1,4 +1,4 @@
-import {ADD_PLAYER} from "../actionType";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../actionType";
 
 let maxId = 4;
 
@@ -18,6 +18,27 @@ export const playerReducer = (state = playerInitialState, action) => {
 		case ADD_PLAYER:
 			// 기존 player에 name을 가진 player 객체를 추가
 			state.players.push({name: action.name, score:0, id: ++maxId});
+			return {
+				...state,
+				players: [
+					...state.players
+				]
+			}
+		case CHANGE_SCORE:
+			state.players.forEach(player => {
+				if (player.id === action.id){
+					player.score += action.delta;
+				}
+			})
+			return {
+				...state,
+				players: [
+					...state.players
+				]
+			}
+		case REMOVE_PLAYER:
+			const index = state.players.findIndex(player => player.id === action.id)
+			state.players.splice(index, 1);
 			return {
 				...state,
 				players: [
